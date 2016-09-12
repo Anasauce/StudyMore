@@ -1,5 +1,5 @@
 # StudyMore
-Digital Flashcards
+Digital Flashcards to track knowledge.
 
 # An app that helps you study...
 
@@ -18,22 +18,27 @@ Creating this web application will provide exposure to:
 
 # Specifications
 
-- [ ] User can create "flashcards" and organize them into different categories.
+- [ ] Login/Sign up
+- [ ] Create a Subject
+- [ ] User can create "flashcards" ( CRUD on all flash cards.  )
+- [ ] Organize cards into different subjects.
 - [ ] Each flash card has a "front" and "back" so user can test their knowledge.
-- [ ] CRUD on all flash cards.
-- [ ] User can test themselves with flashcards (possibly use CSS animations to do this) and record their progress. (see https://www.studyblue.com for example)
-
+- [ ] Self report on each card.
+- [ ] Record their progress. 
+- [ ] Dashboard for users to see subjects.
+- [ ] Subject page so users can see flashcards
+ 
 
 # Required
 
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 # Quality Rubric
 
-- Interface is user friendly
-- User can easily organize flashcards
-- Code is well formatted without any linting errors
-- Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
-- Functions are small and serve a single purpose
-- Code is well organized into a meaningful file structure
+- [ ] Sign/login without any issues
+- [ ] User can see and easily organize flashcards
+- [ ] Code is well formatted without any linting errors
+- [ ] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
+- [ ] Functions are small and serve a single purpose
+- [ ] Code is well organized into a meaningful file structure
 
