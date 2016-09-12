@@ -1,4 +1,4 @@
-c# StudyMore
+# StudyMore
 Digital Flashcards to track knowledge.
 
 # An app that helps you study...
