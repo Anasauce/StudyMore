@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon --exec npm run babel-node -- ./bin/www",
+    "babel-node": "babel-node --presets=es2015",
+    "test": "babel-node spec/run.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -13,5 +15,8 @@
     "hbs": "~4.0.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0"
   }
 }
