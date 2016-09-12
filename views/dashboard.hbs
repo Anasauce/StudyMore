@@ -1,0 +1,16 @@
+<p>Hello, {{username}}!!!
+  Welcome back to StudyMore
+</p>
+
+<button href="/subject"> Create Subject </button>
+<button href="/card"> Create Card </button>
+
+<h3>Subjects</h3>
+<ul>
+  {{#each subjects}}
+  <li>{{title}}
+    {{noOfCards}}
+    {{lastPercentage}}
+  </li>
+  {{/each}}
+</ul>
