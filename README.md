@@ -6,6 +6,9 @@ Digital Flashcards to track knowledge.
 A flash card app/ study tool app where you can create digital flashcards and use them to study and subject of your choice.
 
 
+![alt tag](schema.png)
+
+
 # Context
 
 Creating this web application will provide exposure to:
