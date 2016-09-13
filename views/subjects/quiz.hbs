@@ -1,0 +1,25 @@
+<button type="button" name="exit" href="/subjects/${id}">EXIT</button>
+
+<h1>{{subject.title}} Quiz </h1>
+
+<div class="front">
+  {{card.front}}
+</div>
+
+<div class="back">
+  {{card.back}}
+</div>
+
+<form action="/quiz/{{id}}/{{nextCard}}">
+  <input type="hidden" name="correct" value="false" />
+  <input type="hidden" name="cardId" value="{{card.id}}" />
+  <button type="submit">Incorrect</button>
+</form>
+
+<button id="flip-button" type="button" name="flip">FLIP</button>
+
+<form action="/quiz/{{id}}/{{nextCard}}">
+  <input type="hidden" name="correct" value="true" />
+  <input type="hidden" name="cardId" value="{{card.id}}" />
+  <button type="submit">Correct</button>
+</form>

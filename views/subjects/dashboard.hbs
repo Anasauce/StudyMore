@@ -1,7 +1,7 @@
 <h1>{{subject.title}}</h1>
 
-<button href="/subject/study"> Study </button>
-<button href="/card"> Create Card </button>
+<a href="/subjects/{{subject.id}}/study" class="btn btn-default">Study</a>
+<a href="/card" class="btn btn-default">Create Card</a>
 
 <h3>Cards</h3>
 <ul>
@@ -9,8 +9,8 @@
   <li>
     {{front}}
     {{back}}
-    <button type="button" name="edit" href="/card/edit/{{id}}">Edit Card</button>
-    <button type="button" name="delete" href="/card/delete/{{id}}">Delete Card</button>
+    <button type="button" name="edit" href="/card/edit/{{subject.id}}">Edit Card</button>
+    <button type="button" name="delete" href="/card/delete/{{subject.id}}">Delete Card</button>
   </li>
   {{/each}}
 </ul>

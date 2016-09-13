@@ -5,7 +5,6 @@ CREATE TABLE quiz_cards
   id SERIAL PRIMARY KEY,
   quiz_id INTEGER NOT NULL,
   card_id INTEGER NOT NULL,
-  rank INTEGER NOT NULL,
   correct BOOLEAN NOT NULL DEFAULT false
 );
 
@@ -33,7 +32,6 @@ CREATE TABLE cards
   back VARCHAR(255) NOT NULL,
   subject_id INTEGER NOT NULL
 );
-
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
