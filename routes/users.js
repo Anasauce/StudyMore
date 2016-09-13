@@ -28,13 +28,11 @@ router.get( '/dashboard', checkAuthentication(), (request, response) => {
   const { id } = request.user
 
   Subject.findById(id)
-      .then(result => {
-        console.log(result);
-        response.render('dashboard', { subject:  result })
-      }).catch(error => {
-        response.send({message: error})
-      })
-
+    .then(result => {
+      response.render('dashboard', { subject:  result })
+    }).catch(error => {
+      response.send({message: error})
+    })
 })
 
 // TODO: Figure out why I can't use ES6 export statement
