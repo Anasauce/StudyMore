@@ -1,9 +1,29 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express'
+const router = express.Router()
+
+import { Subject } from '../database/db'
 
 /* GET home page. */
-router.get('/new', function(req, res, next) {
-  res.render('create_subject', { title: 'Create Subject' });
-});
+router.get('/new', (req, res, next) => {
 
-module.exports = router;
+  res.render('create_subject')
+})
+
+/* GET home page. */
+router.post('/create-subject', ( request, response ) => {
+  const { id } = request.user
+  const { title } = request.body 
+
+  console.log('Data', id, title)
+
+  Subject.create( title, id ).then( result => {
+
+    console.log( 'Subject Result', result )
+    
+    res.send(result)
+    // res.redirect(`/subjects/${}`, { result })
+  })
+
+})
+
+module.exports = router

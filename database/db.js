@@ -15,4 +15,10 @@ const User = {
   signUp: (name, email, password) => db.one( createUser, [name, email, password])
 }
 
-export { User }
+const insertSubject = 'INSERT INTO subjects( title, user_id ) VALUES( $1, $2 ) RETURNING id'
+
+const Subject = {
+  create: ( title, id ) => db.one( insertSubject, [ title, id ])
+}
+
+export { User, Subject }
