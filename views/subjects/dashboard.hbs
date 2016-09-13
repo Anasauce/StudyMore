@@ -1,16 +1,16 @@
-<h1>{{Subject}}</h1>
-<h2>{{lastPercentage}}</h2>
+<h1>{{subject.title}}</h1>
 
 <button href="/subject/study"> Study </button>
 <button href="/card"> Create Card </button>
 
 <h3>Cards</h3>
 <ul>
-  {{#each card}}
-  <li>{{front}}
+  {{#each cards}}
+  <li>
+    {{front}}
     {{back}}
-    <button type="button" name="edit" href=`/card/edit/${id}`>Edit Card</button>
-    <button type="button" name="delete" href=`/card/delete/${id}`>Delete Card</button>
+    <button type="button" name="edit" href="/card/edit/{{id}}">Edit Card</button>
+    <button type="button" name="delete" href="/card/delete/{{id}}">Delete Card</button>
   </li>
   {{/each}}
 </ul>

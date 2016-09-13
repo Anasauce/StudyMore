@@ -11,10 +11,7 @@
 
 <h3>Subjects</h3>
 <ul>
-  {{#each subjects}}
-  <li>{{title}}
-    {{noOfCards}}
-    {{lastPercentage}}
-  </li>
+  {{#each subject}}
+  <li><a href="/subjects/{{id}}">{{title}}</a></li>
   {{/each}}
 </ul>
