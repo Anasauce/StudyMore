@@ -8,6 +8,8 @@ const db = pgp({
 const findUserById = 'SELECT * FROM users WHERE id=$1'
 const findByLogin = 'SELECT * FROM users WHERE email=$1 AND password=$2'
 const createUser = 'INSERT INTO users( name, email, password ) VALUES ( $1, $2, $3 ) RETURNING id'
+const findSubjectById = 'SELECT * FROM subjects WHERE user_id=$1'
+const createCard = 'INSERT INTO cards(front, back, subject_id) VALUES ($1, $2, $3) RETURNING id'
 
 const User = {
   findById: id => db.one( findUserById, [id] ),
@@ -18,7 +20,12 @@ const User = {
 const insertSubject = 'INSERT INTO subjects( title, user_id ) VALUES( $1, $2 ) RETURNING id'
 
 const Subject = {
-  create: ( title, id ) => db.one( insertSubject, [ title, id ])
+  create: ( title, id ) => db.one( insertSubject, [ title, id ]),
+  findById: user_id => db.any( findSubjectById, [user_id])
 }
 
-export { User, Subject }
+const Card = {
+  create: (front, back, subject_id) => db.one(createCard, [front, back, subject_id])
+}
+
+export { User, Subject, Card }

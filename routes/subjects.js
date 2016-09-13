@@ -12,16 +12,15 @@ router.get('/new', (req, res, next) => {
 /* GET home page. */
 router.post('/create-subject', ( request, response ) => {
   const { id } = request.user
-  const { title } = request.body 
+  const { title } = request.body
 
   console.log('Data', id, title)
 
   Subject.create( title, id ).then( result => {
 
     console.log( 'Subject Result', result )
-    
-    res.send(result)
-    // res.redirect(`/subjects/${}`, { result })
+
+    res.redirect(`/subjects/${result.id}`)
   })
 
 })
