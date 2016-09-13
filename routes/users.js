@@ -3,7 +3,7 @@ const router = express.Router()
 
 import passport, { checkAuthentication } from '../authentication/passport'
 
-import { User } from '../database/db'
+import { User, Subject } from '../database/db'
 
 const OPTIONS = {
   successRedirect: '/users/dashboard',
@@ -25,7 +25,14 @@ router.post( '/signup', (request, response) => {
 })
 
 router.get( '/dashboard', checkAuthentication(), (request, response) => {
-  response.render( 'dashboard' )
+  const { id } = request.user
+
+  Subject.findById(id)
+    .then(result => {
+      response.render('dashboard', { subject:  result })
+    }).catch(error => {
+      response.send({message: error})
+    })
 })
 
 // TODO: Figure out why I can't use ES6 export statement
