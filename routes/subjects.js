@@ -33,6 +33,9 @@ router.get( '/:id/study', (request, response) => {
 
   Quiz.create( user_id, id )
     .then( result => response.redirect( `/quiz/${result[0]}/0` ))
+    .catch( error => response.send ({
+     message: error.message
+    }))
 })
 
 module.exports = router
