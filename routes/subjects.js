@@ -34,13 +34,22 @@ router.get('/edit/:subject_id', ( request, response ) => {
   response.render('subjects/edit', { subject_id })
 })
 
-router.post('/edit-subject/:subject_id', ( request, response ) => {
+router.post('/edit/:subject_id', ( request, response ) => {
   const { subject_id } = request.params
   const { title } = request.body
 
   Subject.update( title, subject_id ).then( result => {
     response.redirect(`/subjects/${subject_id}`)
   })
+})
+
+router.get('/delete/:subject_id', ( request, response ) => {
+  const { subject_id } = request.params
+
+  Subject.delete( subject_id ).then( () => {
+    response.redirect('/users/dashboard')
+  })
+  .catch( error => { message: error.message })
 })
 
 router.get( '/:id/study', (request, response) => {
