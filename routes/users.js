@@ -25,11 +25,11 @@ router.post( '/signup', (request, response) => {
 })
 
 router.get( '/dashboard', checkAuthentication(), (request, response) => {
-  const { id } = request.user
+  const { id, name } = request.user
 
   Subject.findById(id)
     .then(result => {
-      response.render('dashboard', { subject:  result })
+      response.render('dashboard', { subject:  result, username: name })
     }).catch(error => {
       response.send({message: error})
     })
