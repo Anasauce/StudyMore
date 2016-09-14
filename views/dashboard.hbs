@@ -3,15 +3,18 @@
 </p>
 
 <button>
-<a href="/subjects/new"> Create Subject </a>
+  <a href="/subjects/new"> Create Subject </a>
 </button>
 <button>
-   <a href="/cards/new"> Create Card </a>
- </button>
+  <a href="/cards/new"> Create Card </a>
+</button>
 
 <h3>Subjects</h3>
 <ul>
   {{#each subject}}
-  <li><a href="/subjects/{{id}}">{{title}}</a></li>
+  <li>
+    <a href="/subjects/{{id}}">{{title}}</a>
+    <a class="btn btn-success" href="/subjects/edit/{{id}}">Edit</a>
+  </li>
   {{/each}}
 </ul>
