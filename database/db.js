@@ -18,6 +18,9 @@ const addCardToQuiz = 'INSERT INTO quiz_cards( quiz_id, card_id ) VALUES ( $1, $
 const nextQuestion = 'SELECT cards.* FROM quiz_cards JOIN cards ON cards.id=quiz_cards.card_id WHERE quiz_id=$1 LIMIT 1 OFFSET $2'
 const getQuizSubject = 'SELECT subjects.* FROM quizzes JOIN subjects ON quizzes.subject_id=subjects.id WHERE quizzes.id=$1'
 
+const isCorrect = 'UPDATE quiz_cards SET correct=$1 WHERE card_id=$2'
+const count = `SELECT COUNT(*) FROM quiz_cards WHERE id=$!`
+
 const User = {
   findById: id => db.one( findUserById, [id] ),
   find: (email, password) => db.any( findByLogin, [email, password] ),
@@ -45,6 +48,7 @@ const Quiz = {
       .then( result => {
         const [ quizId, cards ] = result
 
+
         return Promise.all([
           Promise.resolve( quizId ),
           ...cards.map( card => db.none( addCardToQuiz, [quizId, card.id] ))
@@ -55,4 +59,14 @@ const Quiz = {
   nextQuestion: (quizId, cardNumber) => db.one( nextQuestion, [quizId, cardNumber] )
 }
 
-export { User, Subject, Card, Quiz }
+const QuizCard = {
+  update: (correct, cardId) => {
+    return db.none(isCorrect, [correct, cardId])
+  },
+  length: id => {
+    return db.one(count, [id])
+
+  }
+}
+
+export { User, Subject, Card, Quiz, QuizCard}
