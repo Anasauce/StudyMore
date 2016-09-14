@@ -14,7 +14,9 @@
   {{#each subject}}
   <li>
     <a href="/subjects/{{id}}">{{title}}</a>
+
     <a class="btn btn-success" href="/subjects/edit/{{id}}">Edit</a>
+    <a class="btn btn-danger" href="/subjects/delete/{{id}}">Delete</a>
   </li>
   {{/each}}
 </ul>

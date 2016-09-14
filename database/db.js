@@ -10,6 +10,7 @@ const findSubjectById = 'SELECT * FROM subjects WHERE user_id=$1'
 const findBySubjectId = 'SELECT * FROM subjects WHERE id=$1'
 const insertSubject = 'INSERT INTO subjects( title, user_id ) VALUES( $1, $2 ) RETURNING id'
 const updateSubject = 'UPDATE subjects SET title = $1 WHERE id = $2 RETURNING id'
+const deleteSubject = 'DELETE FROM subjects WHERE id = $1'
 
 const createCard = 'INSERT INTO cards(front, back, subject_id) VALUES ($1, $2, $3) RETURNING id'
 const findCardBySubjectId = 'SELECT * FROM cards WHERE subject_id=$1'
@@ -32,7 +33,8 @@ const Subject = {
   update: ( title, id ) => db.one( updateSubject, [ title, id ] ),
   create: ( title, id ) => db.one( insertSubject, [ title, id ]),
   findById: user_id => db.any( findSubjectById, [user_id]),
-  find: id => db.one( findBySubjectId, [id] )
+  find: id => db.one( findBySubjectId, [ id ] ),
+  delete: id => db.none( deleteSubject, [ id ] )
 }
 
 const Card = {
