@@ -14,6 +14,7 @@ const deleteSubject = 'DELETE FROM subjects WHERE id = $1'
 
 const createCard = 'INSERT INTO cards(front, back, subject_id) VALUES ($1, $2, $3) RETURNING id'
 const findCardBySubjectId = 'SELECT * FROM cards WHERE subject_id=$1'
+const deleteCard = 'DELETE FROM cards WHERE id = $1'
 
 const createQuiz = 'INSERT INTO quizzes( user_id, subject_id ) VALUES ( $1, $2 ) RETURNING id'
 const addCardToQuiz = 'INSERT INTO quiz_cards( quiz_id, card_id ) VALUES ( $1, $2 )'
@@ -39,7 +40,8 @@ const Subject = {
 
 const Card = {
   create: (front, back, subject_id) => db.one(createCard, [front, back, subject_id]),
-  findBySubjectId: id => db.any( findCardBySubjectId, [id])
+  findBySubjectId: id => db.any( findCardBySubjectId, [id]),
+  delete: id => db.none( deleteCard, [id])
 }
 
 const Quiz = {
