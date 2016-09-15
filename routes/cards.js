@@ -36,4 +36,10 @@ router.get('/delete/:card_id/:subject_id', (request, response) => {
     })
 })
 
+router.get('/edit/:card_id', (request, response) => {
+  const { card_id } = request.params
+
+  response.render('edit_card', { card_id })
+})
+
 module.exports = router
