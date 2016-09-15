@@ -16,11 +16,12 @@ const findCardBySubjectId = 'SELECT * FROM cards WHERE subject_id=$1'
 
 const createQuiz = 'INSERT INTO quizzes( user_id, subject_id ) VALUES ( $1, $2 ) RETURNING id'
 const addCardToQuiz = 'INSERT INTO quiz_cards( quiz_id, card_id ) VALUES ( $1, $2 )'
-const nextQuestion = 'SELECT cards.* FROM quiz_cards JOIN cards ON cards.id=quiz_cards.card_id WHERE quiz_id=$1 LIMIT 1 OFFSET $2'
+const nextQuestion = 'SELECT cards.* FROM quiz_cards JOIN cards ON cards.id=quiz_cards.card_id WHERE quiz_id=$1 ORDER BY id LIMIT 1 OFFSET $2'
 const getQuizSubject = 'SELECT subjects.* FROM quizzes JOIN subjects ON quizzes.subject_id=subjects.id WHERE quizzes.id=$1'
 
 const isCorrect = 'UPDATE quiz_cards SET correct=$1 WHERE card_id=$2'
-const count = `SELECT COUNT(*) FROM quiz_cards WHERE id=$!`
+const count = `SELECT COUNT(id) FROM quiz_cards WHERE quiz_id=$1`
+const wrong = `SELECT id FROM quiz_cards WHERE quiz_id=$1 AND correct=false`
 
 const User = {
   findById: id => db.one( findUserById, [id] ),
@@ -65,9 +66,11 @@ const QuizCard = {
   update: (correct, cardId) => {
     return db.none(isCorrect, [correct, cardId])
   },
-  length: id => {
+  count: id => {
     return db.one(count, [id])
-
+  },
+  incorrect: id => {
+    return db.many(wrong, [id])
   }
 }
 
