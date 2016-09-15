@@ -7,7 +7,7 @@ const findByLogin = 'SELECT * FROM users WHERE email=$1 AND password=$2'
 const createUser = 'INSERT INTO users( name, email, password ) VALUES ( $1, $2, $3 ) RETURNING id'
 
 const findSubjectById = 'SELECT * FROM subjects WHERE user_id=$1'
-const findBySubjectId = 'SELECT * FROM subjects WHERE id=$1'
+const findBySubjectId = 'SELECT * FROM subjects WHERE id = $1'
 const insertSubject = 'INSERT INTO subjects( title, user_id ) VALUES( $1, $2 ) RETURNING id'
 const updateSubject = 'UPDATE subjects SET title = $1 WHERE id = $2 RETURNING id'
 const deleteSubject = 'DELETE FROM subjects WHERE id = $1'
@@ -15,7 +15,8 @@ const deleteSubject = 'DELETE FROM subjects WHERE id = $1'
 const createCard = 'INSERT INTO cards(front, back, subject_id) VALUES ($1, $2, $3) RETURNING id'
 const findCardBySubjectId = 'SELECT * FROM cards WHERE subject_id=$1'
 const deleteCard = 'DELETE FROM cards WHERE id = $1'
-const updateCard = 'UPDATE cards SET front = $1, back = $2 WHERE ID = $3 RETURNING ID'
+const updateCard = 'UPDATE cards SET front = $1, back = $2, subject_id = $3 WHERE id = $4'
+const findById = 'SELECT * FROM cards WHERE id = $1'
 
 const createQuiz = 'INSERT INTO quizzes( user_id, subject_id ) VALUES ( $1, $2 ) RETURNING id'
 const addCardToQuiz = 'INSERT INTO quiz_cards( quiz_id, card_id ) VALUES ( $1, $2 )'
@@ -43,7 +44,10 @@ const Card = {
   create: (front, back, subject_id) => db.one(createCard, [front, back, subject_id]),
   findBySubjectId: id => db.any( findCardBySubjectId, [id]),
   delete: id => db.none( deleteCard, [id]),
-  update: (front, back, id) => db.one(updateCard, [front, back, id])
+  update: (front, back, subject_id, id) => { 
+    return db.none(updateCard, [front, back, subject_id ,id])
+  },
+  find: id => db.one( findById, [ id ] )
 }
 
 const Quiz = {
