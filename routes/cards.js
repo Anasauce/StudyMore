@@ -48,7 +48,7 @@ router.get('/edit/:card_id', (request, response) => {
         .then( result => { 
           const [ subject ] = result 
 
-          response.render('edit_card', { card, subject, subjects  })     
+          response.render('edit_card', { card, subject, subjects  } )     
         })
     })
 })
@@ -60,9 +60,11 @@ router.post('/edit/:card_id', (request, response) => {
 
   Card.update(front, back, subject_id, card_id)
     .then( () => {
-      response.redirect(`/subjects/${id}`)
-    })
-})
 
+      console.log('Is the problem in Here')
+      response.redirect(`/subjects/${subject_id}`)
+    })
+    .catch( error => { messege: error.messege })
+})
 
 module.exports = router

@@ -1,19 +1,15 @@
 <div class="container">
   <div class="col-md-5">
     <div class="form-area">
-      <form role="form" method="post" action="/cards/edit/:{{card.id}}">
-        <h3 style="margin-bottom: 25px; text-align: center;">Current Subject: {{ subject.title }}</h3>
+      <form role="form" method="post" action="/cards/edit/{{card.id}}">
+        <h3 style="margin-bottom: 25px; text-align: center;">Current Subject: {{subject.title}}</h3>
         
         <div class="form-group">
-          <textarea class="form-control" name="front" type="textarea" maxlength="140" rows="7">
-          {{ card.front }}
-          </textarea>
+          <textarea class="form-control" name="front" type="textarea" maxlength="140" rows="7">{{card.front}}</textarea>
         </div>
 
         <div class="form-group">
-          <textarea class="form-control" name="back" type="textarea" maxlength="140" rows="7">
-            {{ card.back }}
-          </textarea>
+          <textarea class="form-control" name="back" type="textarea" maxlength="140" rows="7">{{card.back}}</textarea>
         </div>
 
         <div class="form-group">
