@@ -22,4 +22,18 @@ router.post('/create_card', ( request, response ) => {
     })
 })
 
+router.get('/delete/:card_id/:subject_id', (request, response) => {
+  const { card_id, subject_id } = request.params
+
+  console.log( 'Param Values', card_id, subject_id )
+
+  Card.delete( card_id )
+    .then( () => {
+      response.redirect(`/subjects/${subject_id}`)
+    })
+    .catch(error => {
+      messege: error.messege
+    })
+})
+
 module.exports = router
