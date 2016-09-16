@@ -197,8 +197,8 @@ button.navbar-toggle. .icon-bar {
 }
 
 .btn {
-  border: 2.5px solid #0000ff;
-  color: #0000ff;
+  border: 2.5px solid #ffffff;
+  color: #ffffff;
   font-weight: 200;
   border-radius: 0px;
   margin-bottom: 17px;
@@ -217,6 +217,11 @@ ul {
 .card-count {
   margin-left: 20px;
   margin-top: 15px;
+}
+
+.login-button {
+  background-color: #ff6666;
+  border-color: #ff6666;
 }
 
 .signup-button {
