@@ -29,7 +29,7 @@ router.get( '/dashboard', checkAuthentication(), (request, response) => {
 
   Subject.findById(id)
     .then(result => {
-      response.render('dashboard', { subject:  result, username: name })
+      response.render('dashboard', { subject:  result, username: name, loggedIn: request.user !== undefined })
     }).catch(error => {
       response.send({message: error})
     })

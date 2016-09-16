@@ -1,8 +1,101 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.section-1 {
+  margin: 0px;
+  padding-top: 200px;
+  padding-bottom: 500px;
+  background: url('http://i.imgur.com/JhuyMiT.png') top center;
+  background-size: cover;
+}
+
+.conquer-course {
+  font-size: 6em;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.7),0 3px 7px rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.study-more-info {
+  font-size: 3em;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.7),0 3px 7px rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.navbar {
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  font-size: 1.6em;
+  padding-right: 80px;
+  border-color: transparent;
+}
+
+a.navbar-brand {
+  font-size: 1.2em;
+  padding-top:7px;
+  color: white;
+}
+
+.dropdown-menu > li > a {
+    background-color: transparent;
+}
+
+button.navbar-toggle. .icon-bar {
+  color: white;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+}
+
+.caret {
+  color: white;
+}
+
+.logo {
+  color: white;
+}
+/*.navbar-brand {
+  padding: 5px, 15px;
+}*/
+
+
+.glyphicon {
+  padding-left: 80px;
+  color: white;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  color: #555;
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 500px) {
+  .glyphicon {
+    padding-left: 0px;
+  },
+  .navbar {
+    padding-left: 0px;
+  }
+  .study-more-info {
+    font-size: 1.5em;
+  }
+  .conquer-course {
+    margin-top: 15px;
+    font-size: 2.5em;
+  }
 }
