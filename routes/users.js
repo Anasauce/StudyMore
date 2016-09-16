@@ -3,7 +3,7 @@ const router = express.Router()
 
 import passport, { checkAuthentication } from '../authentication/passport'
 
-import { User, Subject } from '../database/db'
+import { User, Subject, Card } from '../database/db'
 
 const OPTIONS = {
   successRedirect: '/users/dashboard',
@@ -27,11 +27,24 @@ router.post( '/signup', (request, response) => {
 router.get( '/dashboard', checkAuthentication(), (request, response) => {
   const { id, name } = request.user
 
-  Subject.findById(id)
+  Promise.all([ Subject.findById(id) ])
     .then(result => {
-      response.render('dashboard', { subject:  result, username: name, loggedIn: request.user !== undefined })
-    }).catch(error => {
-      response.send({message: error})
+      const [ subjects ] = result
+      const subjectIds = subjects.map(subject => subject.id)
+
+      Promise.all([ Card.findCardsBySubjectIds(subjectIds) ])
+        .then( data => {
+          const [ cards ] = data
+
+          subjects.forEach(subject => {
+            subject.cards = cards.filter(card => card.subject_id === subject.id).length
+          })
+
+          response.render('dashboard', { subject:  subjects, username: name, loggedIn: request.user !== undefined })
+        })
+    })
+    .catch(error => {
+      response.send({message: error.message})
     })
 })
 

@@ -17,14 +17,16 @@ const findCardBySubjectId = 'SELECT * FROM cards WHERE subject_id=$1'
 const deleteCard = 'DELETE FROM cards WHERE id = $1'
 const updateCard = 'UPDATE cards SET front = $1, back = $2, subject_id = $3 WHERE id = $4'
 const findById = 'SELECT * FROM cards WHERE id = $1'
+const findCards = 'SELECT cards.*, subject_id FROM cards WHERE subject_id IN ($1:csv)'
 
 const createQuiz = 'INSERT INTO quizzes( user_id, subject_id ) VALUES ( $1, $2 ) RETURNING id'
 const addCardToQuiz = 'INSERT INTO quiz_cards( quiz_id, card_id ) VALUES ( $1, $2 )'
-const nextQuestion = 'SELECT cards.* FROM quiz_cards JOIN cards ON cards.id=quiz_cards.card_id WHERE quiz_id=$1 LIMIT 1 OFFSET $2'
+const nextQuestion = 'SELECT cards.* FROM quiz_cards JOIN cards ON cards.id=quiz_cards.card_id WHERE quiz_id=$1 ORDER BY id LIMIT 1 OFFSET $2'
 const getQuizSubject = 'SELECT subjects.* FROM quizzes JOIN subjects ON quizzes.subject_id=subjects.id WHERE quizzes.id=$1'
 
 const isCorrect = 'UPDATE quiz_cards SET correct=$1 WHERE card_id=$2'
-const count = `SELECT COUNT(*) FROM quiz_cards WHERE id=$!`
+const count = `SELECT COUNT(id) FROM quiz_cards WHERE quiz_id=$1`
+const wrong = `SELECT id FROM quiz_cards WHERE quiz_id=$1 AND correct=false`
 
 const User = {
   findById: id => db.one( findUserById, [id] ),
@@ -44,10 +46,11 @@ const Card = {
   create: (front, back, subject_id) => db.one(createCard, [front, back, subject_id]),
   findBySubjectId: id => db.any( findCardBySubjectId, [id]),
   delete: id => db.none( deleteCard, [id]),
-  update: ( front, back, subject_id, id ) => { 
+  update: ( front, back, subject_id, id ) => {
     return db.none( updateCard, [ front, back, subject_id , id ])
   },
-  find: id => db.one( findById, [ id ] )
+  find: id => db.one( findById, [ id ] ),
+  findCardsBySubjectIds: subjectIds => db.manyOrNone( findCards, [ subjectIds ])
 }
 
 const Quiz = {
@@ -75,9 +78,11 @@ const QuizCard = {
   update: (correct, cardId) => {
     return db.none(isCorrect, [correct, cardId])
   },
-  length: id => {
+  count: id => {
     return db.one(count, [id])
-
+  },
+  incorrect: id => {
+    return db.many(wrong, [id])
   }
 }
 
