@@ -1,22 +1,46 @@
-<p>Hello, {{username}}!!!
+<p class="page-header welcome-font">Hello, {{username}}!!!
   Welcome back to StudyMore
 </p>
 
-<button>
-  <a href="/subjects/new"> Create Subject </a>
-</button>
-<button>
-  <a href="/cards/new"> Create Card </a>
-</button>
+<div class="row">
 
-<h3>Subjects</h3>
-<ul>
-  {{#each subject}}
-  <li>
-    <a href="/subjects/{{id}}">{{title}}</a>
+  <div class="col-md-3 col-sm-3">
+    <ul>
+      <li><a class="btn create-btn btn-lg" href="/subjects/new" role="button">Create Subject</a></li>
+      <li><a class="btn create-btn btn-lg" href="/cards/new" role="button">Create Card</a></li>
+    </ul>
+  </div>
 
-    <a class="btn btn-success" href="/subjects/edit/{{id}}">Edit</a>
-    <a class="btn btn-danger" href="/subjects/delete/{{id}}">Delete</a>
-  </li>
-  {{/each}}
-</ul>
+  <div class="col-md-9 col-sm-9 pull-right pad-tron">
+    {{#each subject}}
+      <div class="group-button pull-right">
+        <ul>
+
+          <li>
+            <a class="btn" href="/subjects/edit/{{id}}">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+          </li>
+
+          <li>
+            <a class="btn" href="/subjects/delete/{{id}}">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pull-left card-count">
+        <ul>
+          <li><div class="text-center" style="color: #2192d8;">{{cards}} cards</div></li>
+        </ul>
+      </div>
+
+      <div class="jumbotron">
+        <h3><a href="/subjects/{{id}}">{{title}}</a></h3>
+      </div>
+
+    {{/each}}
+  </div
+
+</div>

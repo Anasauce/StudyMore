@@ -6,3 +6,57 @@ body {
 a {
   color: #00B7FF;
 }
+
+.jumbotron {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: white;
+  border: 1px solid #2192d8;
+  background-color: white;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  border-radius: 0px;
+}
+
+.pad-tron {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.create-btn {
+  border: 1px solid #2192d8;
+  color: #2192d8;
+  border-radius: 0px;
+  margin-bottom: 17px;
+  height: 50px;
+  width: 165px;
+}
+
+.welcome-font {
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.btn {
+  border: 1px solid #2192d8;
+  color: #2192d8;
+  font-weight: 100;
+  border-radius: 0px;
+  margin-bottom: 17px;
+}
+
+.group-button {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.card-count {
+  margin-left: 20px;
+  margin-top: 15px;
+}
