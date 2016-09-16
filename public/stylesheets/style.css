@@ -15,10 +15,20 @@ h1, h2, h3, h4, h5, p {
   color: white;
 }
 
+.dashboard-header {
+  margin: 0px;
+  padding-top: 80px;
+  padding-bottom: 0px;
+  background: url('http://i.imgur.com/ryr9yvn.png');
+  background-size: cover;
+  max-width: 100%;
+  display: block;
+}
+
 .login {
   margin: 0px;
   padding-top: 200px;
-  padding-bottom: 500px;
+  padding-bottom: 650px;
   background: url('http://i.imgur.com/ryr9yvn.png');
   background-size: cover;
   max-width: 100%;
@@ -134,10 +144,6 @@ button.navbar-toggle. .icon-bar {
 .logo {
   color: white;
 }
-/*.navbar-brand {
-  padding: 5px, 15px;
-}*/
-
 
 .glyphicon {
   padding-left: 80px;
@@ -166,25 +172,27 @@ button.navbar-toggle. .icon-bar {
 }
 .jumbotron {
   padding-top: 30px;
+  padding-left: 20px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: white;
-  border: 1px solid #2192d8;
-  background-color: white;
+  border: 1px solid #008ae6;
+  background-color: transparent;
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
-  border-radius: 0px;
+  border-radius: 30px;
 }
 
 .pad-tron {
+  padding-top: 25px;
   padding-left: 60px;
-  padding-right: 60px;
+  padding-right: 90px;
 }
 
 .create-btn {
-  border: 1px solid #2192d8;
-  color: #2192d8;
+  margin-top: 25px;
+  margin-left: 60px;
   border-radius: 0px;
   margin-bottom: 17px;
   height: 50px;
@@ -192,8 +200,14 @@ button.navbar-toggle. .icon-bar {
 }
 
 .welcome-font {
-  font-size: 20px;
-  font-weight: 100;
+  color: #ffffff;
+  padding-left: 100px;
+  font-size: 3em;
+  font-weight: 400;
+}
+
+.page-header {
+  margin-bottom: 0px;
 }
 
 .btn {
@@ -205,6 +219,31 @@ button.navbar-toggle. .icon-bar {
   background-color: transparent;
 }
 
+.create-btn {
+  border: solid #008ae6;
+  color: #008ae6;
+  margin-top: 25px;
+  margin-left: 60px;
+  border-radius: 0px;
+  margin-bottom: 17px;
+  height: 50px;
+  width: 165px;
+}
+
+.glyphicon-pencil {
+  color: #008ae6;
+}
+
+.glyphicon-remove {
+  color: #008ae6;
+}
+
+.edit-delete-btn {
+  border: solid #008ae6;
+  color: #008ae6;
+}
+
+
 .group-button {
   margin-top: 15px;
   margin-right: 10px;
@@ -215,9 +254,22 @@ ul {
 }
 
 .card-count {
-  margin-left: 20px;
-  margin-top: 15px;
+  /*font-size: 1.4em;*/
+  margin-left: -18px;
+  margin-top: 20px;
 }
+
+.text-center {
+  text-align: left;
+  color: #008ae6;
+  font-weight: 400;
+}
+
+a {
+  color: #008ae6;
+  font-weight: 600; 
+}
+
 
 .login-button {
   background-color: #ff6666;

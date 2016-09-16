@@ -1,7 +1,7 @@
-<p class="page-header welcome-font">Hello, {{username}}!!!
-  Welcome back to StudyMore
-</p>
-
+<div class="dashboard-header">
+  <h1 class="page-header welcome-font">Hello, {{username}}! Let's Start Studying...</h1>
+</div>
+<div class=section-3>
 <div class="row">
 
   <div class="col-md-3 col-sm-3">
@@ -17,13 +17,13 @@
         <ul>
 
           <li>
-            <a class="btn" href="/subjects/edit/{{id}}">
+            <a class="btn edit-delete-btn" href="/subjects/edit/{{id}}">
               <span class="glyphicon glyphicon-pencil"></span>
             </a>
           </li>
 
           <li>
-            <a class="btn" href="/subjects/delete/{{id}}">
+            <a class="btn edit-delete-btn" href="/subjects/delete/{{id}}">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
           </li>
@@ -32,7 +32,7 @@
 
       <div class="pull-left card-count">
         <ul>
-          <li><div class="text-center" style="color: #2192d8;">{{cards}} cards</div></li>
+          <li><div class="text-center">{{cards}} cards</div></li>
         </ul>
       </div>
 
@@ -42,5 +42,5 @@
 
     {{/each}}
   </div
-
+  </div>
 </div>

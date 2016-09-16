@@ -31,7 +31,7 @@ router.get('/:id', (request, response, next ) => {
 router.get('/edit/:subject_id', ( request, response ) => {
   const { subject_id } = request.params
 
-  response.render('subjects/edit', { subject_id },{loggedIn: request.user !== undefined})
+  response.render('subjects/edit', { subject_id, loggedIn: request.user !== undefined})
 })
 
 router.post('/edit/:subject_id', ( request, response ) => {
