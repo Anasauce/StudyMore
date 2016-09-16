@@ -21,15 +21,15 @@ Creating this web application will provide exposure to:
 
 # Specifications
 
-- [ ] Login/Sign up
-- [ ] Create a Subject
-- [ ] User can create "flashcards" ( CRUD on all flash cards.  )
-- [ ] Organize cards into different subjects.
-- [ ] Each flash card has a "front" and "back" so user can test their knowledge.
-- [ ] Self report on each card.
-- [ ] Record their progress. 
-- [ ] Dashboard for users to see subjects.
-- [ ] Subject page so users can see flashcards
+- [x] Login/Sign up
+- [x] Create a Subject
+- [x] User can create "flashcards" ( CRUD on all flash cards.  )
+- [x] Organize cards into different subjects.
+- [x] Each flash card has a "front" and "back" so user can test their knowledge.
+- [x] Self report on each card.
+- [x] Record their progress. 
+- [x] Dashboard for users to see subjects.
+- [x] Subject page so users can see flashcards
  
 
 # Required
@@ -38,9 +38,9 @@ Creating this web application will provide exposure to:
 
 # Quality Rubric
 
-- [ ] Sign/login without any issues
-- [ ] User can see and easily organize flashcards
-- [ ] Code is well formatted without any linting errors
+- [x] Sign/login without any issues
+- [x] User can see and easily organize flashcards
+- [x] Code is well formatted without any linting errors
 - [ ] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
 - [ ] Functions are small and serve a single purpose
 - [ ] Code is well organized into a meaningful file structure
