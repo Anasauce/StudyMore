@@ -5,7 +5,7 @@ import { Subject, Card, Quiz } from '../database/db'
 
 
 router.get('/new', ( request, response ) => {
-  response.render('subjects/create')
+  response.render('subjects/create', {loggedIn: request.user !== undefined})
 })
 
 router.post('/create-subject', ( request, response ) => {
@@ -24,14 +24,14 @@ router.get('/:id', (request, response, next ) => {
   Promise.all( query )
   .then( result => {
     const [ subject, cards ] = result
-    response.render( 'subjects/dashboard', { subject, cards } )
+    response.render( 'subjects/dashboard', { subject, cards, loggedIn: request.user !== undefined } )
   })
 })
 
 router.get('/edit/:subject_id', ( request, response ) => {
   const { subject_id } = request.params
 
-  response.render('subjects/edit', { subject_id })
+  response.render('subjects/edit', { subject_id },{loggedIn: request.user !== undefined})
 })
 
 router.post('/edit/:subject_id', ( request, response ) => {
