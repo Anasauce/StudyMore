@@ -26,7 +26,7 @@ const getQuizSubject = 'SELECT subjects.* FROM quizzes JOIN subjects ON quizzes.
 
 const isCorrect = 'UPDATE quiz_cards SET correct=$1 WHERE card_id=$2'
 const count = `SELECT COUNT(id) FROM quiz_cards WHERE quiz_id=$1`
-const wrong = `SELECT id FROM quiz_cards WHERE quiz_id=$1 AND correct=false`
+const wrong = `SELECT correct FROM quiz_cards WHERE quiz_id = $1 AND correct = false`
 
 const User = {
   findById: id => db.one( findUserById, [id] ),
@@ -71,7 +71,7 @@ const Quiz = {
       })
   },
   getSubject: id => db.one( getQuizSubject, [id] ),
-  nextQuestion: (quizId, cardNumber) => db.one( nextQuestion, [quizId, cardNumber] )
+  nextQuestion: (quizId, cardNumber) => db.oneOrNone( nextQuestion, [quizId, cardNumber] )
 }
 
 const QuizCard = {
@@ -82,7 +82,7 @@ const QuizCard = {
     return db.one(count, [id])
   },
   incorrect: id => {
-    return db.many(wrong, [id])
+    return db.manyOrNone(wrong, [ id ])
   }
 }
 
