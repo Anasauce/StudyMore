@@ -79,13 +79,9 @@ const Quiz = {
       .then( result => {
         const [ quizId, cards ] = result
         const wrongCards = []
-        console.log('cards:', cards)
         cards.forEach(card=>{
-          console.log('in Cards forEach',card)
           incorrect.forEach(id =>{
-            console.log('incorrect forEach', id);
             if (id == card.id){
-              console.log('pushing:', card.id)
               return wrongCards.push(card)
             }
           })
