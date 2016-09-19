@@ -26,7 +26,7 @@ const getQuizSubject = 'SELECT subjects.* FROM quizzes JOIN subjects ON quizzes.
 
 const isCorrect = 'UPDATE quiz_cards SET correct=$1 WHERE card_id=$2'
 const count = `SELECT COUNT(id) FROM quiz_cards WHERE quiz_id=$1`
-const wrong = `SELECT correct FROM quiz_cards WHERE quiz_id = $1 AND correct = false`
+const wrong = `SELECT * FROM quiz_cards WHERE quiz_id = $1 AND correct = false`
 
 const User = {
   findById: id => db.one( findUserById, [id] ),
@@ -67,6 +67,33 @@ const Quiz = {
         return Promise.all([
           Promise.resolve( quizId ),
           ...cards.map( card => db.none( addCardToQuiz, [quizId, card.id] ))
+        ])
+      })
+  },
+  createFromExtant: (user_id, subject_id, incorrect) => {
+    return db.one( createQuiz, [user_id, subject_id ])
+      .then( quizId => Promise.all([
+        Promise.resolve( quizId.id ),
+        Card.findBySubjectId( subject_id )
+      ]))
+      .then( result => {
+        const [ quizId, cards ] = result
+        const wrongCards = []
+        console.log('cards:', cards)
+        cards.forEach(card=>{
+          console.log('in Cards forEach',card)
+          incorrect.forEach(id =>{
+            console.log('incorrect forEach', id);
+            if (id == card.id){
+              console.log('pushing:', card.id)
+              return wrongCards.push(card)
+            }
+          })
+        })
+
+        return Promise.all([
+          Promise.resolve( quizId ),
+          ...wrongCards.map( card => db.none( addCardToQuiz, [quizId, card.id] ))
         ])
       })
   },
