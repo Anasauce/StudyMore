@@ -1,25 +1,26 @@
-<div class="container">
-  <div class="col-md-5">
-    <div class="form-area">
+<div class="container-fluid create-card">
+  <div class="col-md-6 form-area">
+    <div>
       <form role="form" method="post" action="/cards/create_card">
-        <h3 style="margin-bottom: 25px; text-align: center;">Create A New Flashcard</h3>
+        <h1 style="margin-bottom: 30px; text-align: center;">Create A New Flashcard</h3>
         <div class="form-group">
-          <textarea class="form-control" name="front" type="textarea" maxlength="140" rows="7"></textarea>
+          <label class="col-md-4 control-label"><h4>Front</h4></label>
+          <textarea class="form-control card-space" name="front" type="textarea" maxlength="140" rows="8"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label"><h4>Back</h4></label>
+          <textarea class="form-control card-space" name="back" type="textarea" maxlength="140" rows="8"></textarea>
         </div>
 
         <div class="form-group">
-          <textarea class="form-control" name="back" type="textarea" maxlength="140" rows="7"></textarea>
-        </div>
-
-        <div class="form-group">
-          <select class="selectpicker" data-style="btn-primary" name="id">
+          <select class="selectpicker" data-style="btn" name="id">
             {{#each subject}}
               <option value={{id}}> {{title}} </option>
             {{/each}}
           </select>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+        <button type="submit" name="submit" class="btn pull-right">Submit Form</button>
       </form>
     </div>
   </div>
