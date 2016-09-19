@@ -21,11 +21,13 @@ router.post( '/signup', (request, response) => {
 
   User.signUp( name, email, password )
     .then( user => response.redirect( '/users/dashboard' ))
-    .catch( error => response.redirect( '/' ))
+    .catch( error => response.redirec( '/' ))
 })
 
 router.get( '/dashboard', checkAuthentication(), (request, response) => {
   const { id, name } = request.user
+
+  console.log("ID==>", id, "name==>", name)
 
   Promise.all([ Subject.findById(id) ])
     .then(result => {
@@ -40,7 +42,7 @@ router.get( '/dashboard', checkAuthentication(), (request, response) => {
             subject.cards = cards.filter(card => card.subject_id === subject.id).length
           })
 
-          response.render('dashboard', { subject:  subjects, username: name, loggedIn: request.user !== undefined })
+          response.render('dashboard', { subject: subjects, username: name, loggedIn: request.user !== undefined })
         })
     })
     .catch(error => {

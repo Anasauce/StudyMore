@@ -35,6 +35,16 @@ h1, h2, h3, h4, h5, p {
   display: block;
 }
 
+.create-card {
+  margin: 0px;
+  padding-top: 100px;
+  padding-bottom: 650px;
+  background: url('http://i.imgur.com/ryr9yvn.png');
+  background-size: cover;
+  max-width: 100%;
+  display: block;
+}
+
 .section-1 {
   margin: 0px;
   padding-top: 100px;
@@ -53,6 +63,17 @@ h1, h2, h3, h4, h5, p {
   background-size: cover;
   max-width: 100%;
   height: 500px;
+} 
+
+.card-space {
+  background: url('http://i.imgur.com/t0zXs59.png') top center;
+  background-size: cover;
+  font-size: 1.5em;
+}
+
+.form-area {
+  margin-left: 270px;
+  margin-right: 270px;
 }
 
 .form-section {
@@ -176,8 +197,8 @@ button.navbar-toggle. .icon-bar {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: white;
-  border: 1px solid #008ae6;
-  background-color: transparent;
+  border: 1px solid #4F87AB;
+  background-image: url('http://i.imgur.com/t0zXs59.png');
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
@@ -220,8 +241,8 @@ button.navbar-toggle. .icon-bar {
 }
 
 .create-btn {
-  border: solid #008ae6;
-  color: #008ae6;
+  border: solid #4F87AB;
+  color: #4F87AB;
   margin-top: 25px;
   margin-left: 60px;
   border-radius: 0px;
@@ -231,16 +252,18 @@ button.navbar-toggle. .icon-bar {
 }
 
 .glyphicon-pencil {
-  color: #008ae6;
+  padding-left: 1px;
+  color: #4F87AB;
 }
 
 .glyphicon-remove {
-  color: #008ae6;
+  padding-left: 1px;
+  color: #4F87AB;
 }
 
 .edit-delete-btn {
-  border: solid #008ae6;
-  color: #008ae6;
+  border: solid white;
+  color: #4F87AB;
 }
 
 
@@ -261,12 +284,16 @@ ul {
 
 .text-center {
   text-align: left;
-  color: #008ae6;
+  color: #4F87AB;
   font-weight: 400;
 }
+.back {  
+display: none
+}
+
 
 a {
-  color: #008ae6;
+  color: #4F87AB;
   font-weight: 600; 
 }
 
