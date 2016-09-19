@@ -266,6 +266,11 @@ button.navbar-toggle. .icon-bar {
   color: #4F87AB;
 }
 
+.front {
+  color: #4F87AB;
+  font-size: 1.5em;
+}
+
 
 .group-button {
   margin-top: 15px;
@@ -287,7 +292,9 @@ ul {
   color: #4F87AB;
   font-weight: 400;
 }
-.back {  
+.back {
+color: #4F87AB; 
+font-size: 1.5em; 
 display: none
 }
 

@@ -1,27 +1,31 @@
 
 <div class="container-fluid create-card">
-<button class="btn" type="button" name="exit" href="/subjects/${id}">EXIT</button>
+  <button class="btn" type="button" name="exit" href="/subjects/{$id}">EXIT</button>
 
-<h1>{{subject.title}} Quiz </h1>
+  <h1>{{subject.title}} Quiz </h1>
+<div class="col-md-9 col-sm-9 pull-right pad-tron">
+  <div class="jumbotron front">
+    {{card.front}}
+  </div>
+  
 
-<div class="front">
-  {{card.front}}
-</div>
+  <div class="jumbotron back">
+    {{card.back}}
+  </div>
+  </div>
 
-<div class="back">
-  {{card.back}}
-</div>
 
-<form action="/quiz/{{id}}/{{nextCard}}">
-  <input type="hidden" name="correct" value="false" />
-  <input type="hidden" name="cardId" value="{{card.id}}" />
-  <button class="btn" type="submit">Incorrect</button>
-</form>
+  <form action="/quiz/{{id}}/{{nextCard}}">
+    <input type="hidden" name="correct" value="false" />
+    <input type="hidden" name="cardId" value="{{card.id}}" />
+    <button class="btn" type="submit">Incorrect</button>
+  </form>
 
-<button id="flip-button" type="button" name="flip">FLIP</button>
+  <button class= "btn" id="flip-button" type="button" name="flip">FLIP</button>
 
-<form action="/quiz/{{id}}/{{nextCard}}">
-  <input type="hidden" name="correct" value="true" />
-  <input type="hidden" name="cardId" value="{{card.id}}" />
-  <button class="btn" type="submit">Correct</button>
-</form>
+  <form action="/quiz/{{id}}/{{nextCard}}">
+    <input type="hidden" name="correct" value="true" />
+    <input type="hidden" name="cardId" value="{{card.id}}" />
+    <button class="btn" type="submit">Correct</button>
+  </form>
+  </div>
