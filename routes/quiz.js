@@ -7,6 +7,8 @@ router.get( '/:id/:cardNumber', (request, response) => {
   const { id, cardNumber } = request.params
   const { correct, cardId } = request.query
 
+  console.log( 'these re ids', id, cardNumber )
+
   Quiz.getSubject( id )
     .then( subject => Promise.all([
       Promise.resolve( subject ),
